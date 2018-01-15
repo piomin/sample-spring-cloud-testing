@@ -22,6 +22,13 @@ public class Account {
 		this.customerId = customerId;
 	}
 
+	public Account(String id, String number, int balance, String customerId) {
+		this.id = id;
+		this.number = number;
+		this.balance = balance;
+		this.customerId = customerId;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -52,6 +59,11 @@ public class Account {
 
 	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
+	}
+
+	@Override
+	public String toString() {
+		return "Account [id=" + id + ", number=" + number + ", balance=" + balance + "]";
 	}
 
 }
