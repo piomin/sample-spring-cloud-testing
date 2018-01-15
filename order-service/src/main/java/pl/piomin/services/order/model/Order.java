@@ -2,20 +2,25 @@ package pl.piomin.services.order.model;
 
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
 public class Order {
 
-	private Long id;
+	@Id
+	private String id;
 	private OrderStatus status;
 	private int price;
-	private Long customerId;
-	private Long accountId;
-	private List<Long> productIds;
+	private String customerId;
+	private String accountId;
+	private List<String> productIds;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -35,27 +40,27 @@ public class Order {
 		this.price = price;
 	}
 
-	public Long getCustomerId() {
+	public String getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(Long customerId) {
+	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
 
-	public Long getAccountId() {
+	public String getAccountId() {
 		return accountId;
 	}
 
-	public void setAccountId(Long accountId) {
+	public void setAccountId(String accountId) {
 		this.accountId = accountId;
 	}
 
-	public List<Long> getProductIds() {
+	public List<String> getProductIds() {
 		return productIds;
 	}
 
-	public void setProductIds(List<Long> productIds) {
+	public void setProductIds(List<String> productIds) {
 		this.productIds = productIds;
 	}
 

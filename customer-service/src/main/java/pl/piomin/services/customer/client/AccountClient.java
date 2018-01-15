@@ -12,6 +12,6 @@ import pl.piomin.services.customer.model.Account;
 public interface AccountClient {
 
 	@GetMapping("/customer/{customerId}")
-	List<Account> findByCustomer(@PathVariable("customerId") Long customerId);
+	List<Account> findByCustomer(@PathVariable("customerId") String customerId);
 	
 }

@@ -1,27 +1,32 @@
 package pl.piomin.services.account.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
 public class Account {
 
-	private Long id;
+	@Id
+	private String id;
 	private String number;
 	private int balance;
-	private Long customerId;
+	private String customerId;
 
 	public Account() {
 
 	}
-	
-	public Account(String number, int balance, Long customerId) {
+
+	public Account(String number, int balance, String customerId) {
 		this.number = number;
 		this.balance = balance;
 		this.customerId = customerId;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -41,11 +46,11 @@ public class Account {
 		this.balance = balance;
 	}
 
-	public Long getCustomerId() {
+	public String getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(Long customerId) {
+	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
 

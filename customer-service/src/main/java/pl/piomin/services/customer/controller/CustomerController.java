@@ -35,35 +35,35 @@ public class CustomerController {
 	
 	@PostMapping
 	public Customer add(@RequestBody Customer customer) {
-		return repository.add(customer);
+		return repository.save(customer);
 	}
 	
 	@PutMapping
 	public Customer update(@RequestBody Customer customer) {
-		return repository.update(customer);
+		return repository.save(customer);
 	}
 	
 	@GetMapping("/{id}")
-	public Customer findById(@PathVariable("id") Long id) {
-		return repository.findById(id);
+	public Customer findById(@PathVariable("id") String id) {
+		return repository.findOne(id);
 	}
 	
 	@GetMapping("/withAccounts/{id}")
-	public Customer findByIdWithAccounts(@PathVariable("id") Long id) throws JsonProcessingException {
+	public Customer findByIdWithAccounts(@PathVariable("id") String id) throws JsonProcessingException {
 		List<Account> accounts = accountClient.findByCustomer(id);
 		LOGGER.info("Accounts found: {}", mapper.writeValueAsString(accounts));
-		Customer c = repository.findById(id);
+		Customer c = repository.findOne(id);
 		c.setAccounts(accounts);
 		return c;
 	}
 	
 	@PostMapping("/ids")
-	public List<Customer> find(@RequestBody List<Long> ids) {
-		return repository.find(ids);
+	public List<Customer> find(@RequestBody List<String> ids) {
+		return repository.findByIds(ids);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable("id") Long id) {
+	public void delete(@PathVariable("id") String id) {
 		repository.delete(id);
 	}
 	

@@ -3,12 +3,10 @@ package pl.piomin.services.order.controller;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -66,13 +64,12 @@ public class OrderController {
 			order.setStatus(OrderStatus.REJECTED);
 			LOGGER.info("Account not found: {}", mapper.writeValueAsString(customer.getAccounts()));
 		}
-		Map<String, String> m = MDC.getCopyOfContextMap();
-		return repository.add(order);
+		return repository.save(order);
 	}
 	
 	@PutMapping("/{id}")
-	public Order accept(@PathVariable Long id) throws JsonProcessingException {
-		final Order order = repository.findById(id);
+	public Order accept(@PathVariable String id) throws JsonProcessingException {
+		final Order order = repository.findOne(id);
 		LOGGER.info("Order found: {}", mapper.writeValueAsString(order));
 		accountClient.withdraw(order.getAccountId(), order.getPrice());
 		HashMap<String, Object> log = new HashMap<>();
@@ -81,7 +78,7 @@ public class OrderController {
 		LOGGER.info("Account modified: {}", mapper.writeValueAsString(log));
 		order.setStatus(OrderStatus.DONE);
 		LOGGER.info("Order status changed: {}", mapper.writeValueAsString(Collections.singletonMap("status", order.getStatus())));
-		repository.update(order);
+		repository.save(order);
 		return order;
 	}
 	

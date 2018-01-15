@@ -32,40 +32,40 @@ public class AccountController {
 
 	@PostMapping
 	public Account add(@RequestBody Account account) {
-		return repository.add(account);
+		return repository.save(account);
 	}
 
 	@PutMapping
 	public Account update(@RequestBody Account account) {
-		return repository.update(account);
+		return repository.save(account);
 	}
 
 	@PutMapping("/withdraw/{id}/{amount}")
-	public Account withdraw(@PathVariable("id") Long id, @PathVariable("amount") int amount) throws JsonProcessingException {
-		Account account = repository.findById(id);
+	public Account withdraw(@PathVariable("id") String id, @PathVariable("amount") int amount) throws JsonProcessingException {
+		Account account = repository.findOne(id);
 		LOGGER.info("Account found: {}", mapper.writeValueAsString(account));
 		account.setBalance(account.getBalance() - amount);
 		LOGGER.info("Current balance: {}", mapper.writeValueAsString(Collections.singletonMap("balance", account.getBalance())));
-		return repository.update(account);
+		return repository.save(account);
 	}
 
 	@GetMapping("/{id}")
-	public Account findById(@PathVariable("id") Long id) {
-		return repository.findById(id);
+	public Account findById(@PathVariable("id") String id) {
+		return repository.findOne(id);
 	}
 
 	@GetMapping("/customer/{customerId}")
-	public List<Account> findByCustomerId(@PathVariable("customerId") Long customerId) {
-		return repository.findByCustomer(customerId);
+	public List<Account> findByCustomerId(@PathVariable("customerId") String customerId) {
+		return repository.findByCustomerId(customerId);
 	}
 
 	@PostMapping("/ids")
-	public List<Account> find(@RequestBody List<Long> ids) {
-		return repository.find(ids);
+	public List<Account> find(@RequestBody List<String> ids) {
+		return repository.findByIds(ids);
 	}
 
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable("id") Long id) {
+	public void delete(@PathVariable("id") String id) {
 		repository.delete(id);
 	}
 

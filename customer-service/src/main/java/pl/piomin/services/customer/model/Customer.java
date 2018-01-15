@@ -3,9 +3,14 @@ package pl.piomin.services.customer.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
 public class Customer {
 
-	private Long id;
+	@Id
+	private String id;
 	private String name;
 	private CustomerType type;
 	private List<Account> accounts = new ArrayList<>();
@@ -19,11 +24,11 @@ public class Customer {
 		this.type = type;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

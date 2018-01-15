@@ -11,6 +11,6 @@ import pl.piomin.services.order.model.Product;
 public interface ProductClient {
 
 	@PostMapping("/ids")
-	List<Product> findByIds(List<Long> ids);
+	List<Product> findByIds(List<String> ids);
 	
 }

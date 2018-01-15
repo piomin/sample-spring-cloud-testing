@@ -2,15 +2,15 @@ package pl.piomin.services.order.model;
 
 public class Product {
 
-	private Long id;
+	private String id;
 	private String name;
 	private int price;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

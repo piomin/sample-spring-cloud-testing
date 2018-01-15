@@ -10,6 +10,6 @@ import pl.piomin.services.order.model.Customer;
 public interface CustomerClient {
 
 	@GetMapping("/withAccounts/{customerId}")
-	Customer findByIdWithAccounts(@PathVariable("customerId") Long customerId);
+	Customer findByIdWithAccounts(@PathVariable("customerId") String customerId);
 	
 }
