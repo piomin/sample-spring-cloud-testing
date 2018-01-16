@@ -31,8 +31,18 @@ spring:
 eureka:
   client:
     enabled: false
-ribbon:
-  eureka:
-    enable: false
-  listOfServers: account-service:8080
-  
+account-service:
+  ribbon:
+    eureka:
+      enable: false
+    listOfServers: account-service:8080
+customer-service:
+  ribbon:
+    eureka:
+      enable: false
+    listOfServers: customer-service:8080
+product-service:
+  ribbon:
+    eureka:
+      enable: false
+    listOfServers: product-service:8080
