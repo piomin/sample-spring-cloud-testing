@@ -59,7 +59,7 @@ public class CustomerController {
 	
 	@PostMapping("/ids")
 	public List<Customer> find(@RequestBody List<String> ids) {
-		return repository.findByIds(ids);
+		return repository.findByIdIn(ids);
 	}
 	
 	@DeleteMapping("/{id}")

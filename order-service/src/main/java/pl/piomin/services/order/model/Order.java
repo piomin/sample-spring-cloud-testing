@@ -16,6 +16,19 @@ public class Order {
 	private String accountId;
 	private List<String> productIds;
 
+	public Order() {
+
+	}	
+	
+	public Order(String id, OrderStatus status, int price, String customerId, String accountId, List<String> productIds) {
+		this.id = id;
+		this.status = status;
+		this.price = price;
+		this.customerId = customerId;
+		this.accountId = accountId;
+		this.productIds = productIds;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -62,6 +75,12 @@ public class Order {
 
 	public void setProductIds(List<String> productIds) {
 		this.productIds = productIds;
+	}
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", status=" + status + ", price=" + price + ", customerId=" + customerId
+				+ ", accountId=" + accountId + ", productIds=" + productIds + "]";
 	}
 
 }

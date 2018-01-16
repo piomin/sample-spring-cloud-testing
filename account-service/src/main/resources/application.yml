@@ -1,6 +1,17 @@
 spring:  
   application:
     name: account-service
+
+server:  
+  port: ${PORT:8091}
+        
+logging:
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+        
+---
+spring:
+  profiles: dev
   data:
     mongodb:
       host: 192.168.99.100
@@ -8,35 +19,18 @@ spring:
       database: micro
       username: micro 
       password: micro123
-      
-logging:
-  level:
-    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
-    
----
-spring:
-  profiles: zone1
-eureka:
-  instance:
-    metadataMap:
-      zone: zone1
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-      preferSameZoneEureka: true
-server:  
-  port: ${PORT:8091}
 
 ---
 spring:
-  profiles: zone2
+  profiles: test
+  data:
+    mongodb:
+      host: localhost
+      port: 27017 
+
+---
+spring:
+  profiles: no-discovery     
 eureka:
-  instance:
-    metadataMap:
-      zone: zone2
   client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-      preferSameZoneEureka: true
-server:  
-  port: ${PORT:9091}
+    enabled: false

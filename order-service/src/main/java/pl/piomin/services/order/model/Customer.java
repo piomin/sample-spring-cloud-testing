@@ -10,6 +10,18 @@ public class Customer {
 	private CustomerType type;
 	private List<Account> accounts = new ArrayList<>();
 
+	public Customer() {
+
+	}
+	
+	public Customer(String id, String name, CustomerType type, List<Account> accounts) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.type = type;
+		this.accounts = accounts;
+	}
+
 	public String getId() {
 		return id;
 	}

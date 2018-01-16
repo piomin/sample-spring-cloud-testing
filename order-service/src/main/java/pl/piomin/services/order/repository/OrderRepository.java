@@ -8,7 +8,7 @@ import pl.piomin.services.order.model.Order;
 
 public interface OrderRepository extends MongoRepository<Order, String> {
 	
-	List<Order> findByIds(List<String> ids);
+	List<Order> findByIdIn(List<String> ids);
 	int countByCustomerId(String customerId);
 	
 }

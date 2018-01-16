@@ -8,7 +8,7 @@ import pl.piomin.services.account.model.Account;
 
 public interface AccountRepository extends MongoRepository<Account, String> {
 
-	List<Account> findByIds(List<String> ids);
+	List<Account> findByIdIn(List<String> ids);
 	List<Account> findByCustomerId(String customerId);
 	
 }

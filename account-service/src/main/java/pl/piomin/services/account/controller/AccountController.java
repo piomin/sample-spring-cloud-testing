@@ -61,7 +61,7 @@ public class AccountController {
 
 	@PostMapping("/ids")
 	public List<Account> find(@RequestBody List<String> ids) {
-		return repository.findByIds(ids);
+		return repository.findByIdIn(ids);
 	}
 
 	@DeleteMapping("/{id}")
