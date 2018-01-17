@@ -1,0 +1,107 @@
+{
+  "data" : {
+    "pairs" : [ {
+      "request" : {
+        "path" : {
+          "exactMatch" : "/withdraw/5a5f6bd473538321d4e2b837/1000"
+        },
+        "method" : {
+          "exactMatch" : "PUT"
+        },
+        "destination" : {
+          "exactMatch" : "minkowp-l.p4.org:8091"
+        },
+        "scheme" : {
+          "exactMatch" : "http"
+        },
+        "query" : {
+          "exactMatch" : ""
+        },
+        "body" : {
+          "exactMatch" : ""
+        }
+      },
+      "response" : {
+        "status" : 200,
+        "body" : "{\"id\":\"5a5f6bd473538321d4e2b837\",\"number\":\"123\",\"balance\":4000,\"customerId\":null}",
+        "encodedBody" : false,
+        "templated" : false,
+        "headers" : {
+          "Content-Type" : [ "application/json;charset=UTF-8" ],
+          "Date" : [ "Wed, 17 Jan 2018 15:29:24 GMT" ],
+          "Hoverfly" : [ "Was-Here" ]
+        }
+      }
+    }, {
+      "request" : {
+        "path" : {
+          "exactMatch" : "/"
+        },
+        "method" : {
+          "exactMatch" : "POST"
+        },
+        "destination" : {
+          "exactMatch" : "minkowp-l.p4.org:8091"
+        },
+        "scheme" : {
+          "exactMatch" : "http"
+        },
+        "query" : {
+          "exactMatch" : ""
+        },
+        "body" : {
+          "exactMatch" : "{\"id\":null,\"number\":\"123\",\"balance\":5000}"
+        }
+      },
+      "response" : {
+        "status" : 200,
+        "body" : "{\"id\":\"5a5f6bd473538321d4e2b836\",\"number\":\"123\",\"balance\":5000,\"customerId\":null}",
+        "encodedBody" : false,
+        "templated" : false,
+        "headers" : {
+          "Content-Type" : [ "application/json;charset=UTF-8" ],
+          "Date" : [ "Wed, 17 Jan 2018 15:29:24 GMT" ],
+          "Hoverfly" : [ "Was-Here" ]
+        }
+      }
+    }, {
+      "request" : {
+        "path" : {
+          "exactMatch" : "/withdraw/5a5f6bd473538321d4e2b836/1000"
+        },
+        "method" : {
+          "exactMatch" : "PUT"
+        },
+        "destination" : {
+          "exactMatch" : "minkowp-l.p4.org:8091"
+        },
+        "scheme" : {
+          "exactMatch" : "http"
+        },
+        "query" : {
+          "exactMatch" : ""
+        },
+        "body" : {
+          "exactMatch" : ""
+        }
+      },
+      "response" : {
+        "status" : 200,
+        "body" : "{\"id\":\"5a5f6bd473538321d4e2b836\",\"number\":\"123\",\"balance\":4000,\"customerId\":null}",
+        "encodedBody" : false,
+        "templated" : false,
+        "headers" : {
+          "Content-Type" : [ "application/json;charset=UTF-8" ],
+          "Date" : [ "Wed, 17 Jan 2018 15:29:24 GMT" ],
+          "Hoverfly" : [ "Was-Here" ]
+        }
+      }
+    } ],
+    "globalActions" : {
+      "delays" : [ ]
+    }
+  },
+  "meta" : {
+    "schemaVersion" : "v3"
+  }
+}

@@ -16,8 +16,8 @@ spring:
     mongodb:
       host: 192.168.99.100
       port: 27017
-      database: micro
-      username: micro 
+      database: account
+      username: micro
       password: micro123
 
 ---

@@ -9,12 +9,14 @@ server:
 ---
 spring:
   profiles: dev
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration
   data:
     mongodb:
       host: 192.168.99.100
       port: 27017
-      database: micro
-      username: micro 
+      database: order
+      username: micro
       password: micro123
 
 ---
