@@ -36,7 +36,7 @@ public class CustomerConsumerContractTest {
 	public RequestResponsePact callAccountClient(PactDslWithProvider builder) {
 		return builder.given("list-of-3-accounts").uponReceiving("test-account-service")
 				.path("/customer/1").method("GET").willRespondWith().status(200)
-				.body("[{\"id\":\"1\",\"number\":\"123\",\"balance\":5000},{\"id\":\"2\",\"number\":\"124\",\"balance\":5000},{\"id\":\"1\",\"number\":\"125\",\"balance\":5000}]", "application/json").toPact();
+				.body("[{\"id\":\"1\",\"number\":\"123\",\"balance\":5000},{\"id\":\"2\",\"number\":\"124\",\"balance\":5000},{\"id\":\"2\",\"number\":\"125\",\"balance\":5000}]", "application/json").toPact();
 	}
 
 	@Test
