@@ -1,6 +1,9 @@
 spring:  
   application:
     name: customer-service
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: false
 
 server:  
   port: ${PORT:8092}
