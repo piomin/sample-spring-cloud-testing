@@ -55,8 +55,10 @@ public class AccountController {
 	}
 
 	@GetMapping("/customer/{customerId}")
-	public List<Account> findByCustomerId(@PathVariable("customerId") String customerId) {
-		return repository.findByCustomerId(customerId);
+	public List<Account> findByCustomerId(@PathVariable("customerId") String customerId) throws JsonProcessingException {
+		List<Account> accounts = repository.findByCustomerId(customerId);
+		LOGGER.info("Accounts found: customerId={}, accounts={}", customerId, mapper.writeValueAsString(accounts));
+		return accounts;
 	}
 
 	@PostMapping("/ids")

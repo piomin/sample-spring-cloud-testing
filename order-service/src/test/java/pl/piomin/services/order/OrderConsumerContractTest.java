@@ -1,6 +1,4 @@
-package pl.piomin.services.customer;
-
-import java.util.List;
+package pl.piomin.services.order;
 
 import org.junit.Assert;
 import org.junit.Rule;
@@ -15,8 +13,8 @@ import au.com.dius.pact.consumer.PactProviderRuleMk2;
 import au.com.dius.pact.consumer.PactVerification;
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
 import au.com.dius.pact.model.RequestResponsePact;
-import pl.piomin.services.customer.client.AccountClient;
-import pl.piomin.services.customer.model.Account;
+import pl.piomin.services.order.client.AccountClient;
+import pl.piomin.services.order.model.Account;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(properties = { 
@@ -24,26 +22,28 @@ import pl.piomin.services.customer.model.Account;
 	"account-service.ribbon.eureka.enabled: false",
 	"eureka.client.enabled: false",
 })
-public class CustomerConsumerContractTest {
+public class OrderConsumerContractTest {
 
 	@Rule
-	public PactProviderRuleMk2 stubProvider = new PactProviderRuleMk2("customerServiceProvider", "localhost", 8092, this);
+	public PactProviderRuleMk2 stubProvider = new PactProviderRuleMk2("orderServiceProvider", "localhost", 8092, this);
 
 	@Autowired
 	private AccountClient accountClient;
 
-	@Pact(state = "list-of-3-accounts", provider = "customerServiceProvider", consumer = "accountClient")
+	@Pact(state = "withdraw-from-account", provider = "orderServiceProvider", consumer = "accountClient")
 	public RequestResponsePact callAccountClient(PactDslWithProvider builder) {
-		return builder.given("list-of-3-accounts").uponReceiving("test-account-service")
-				.path("/customer/1").method("GET").willRespondWith().status(200)
-				.body("[{\"id\":\"1\",\"number\":\"123\",\"balance\":5000},{\"id\":\"2\",\"number\":\"124\",\"balance\":5000},{\"id\":\"3\",\"number\":\"125\",\"balance\":5000}]", "application/json").toPact();
+		return builder.given("withdraw-from-account").uponReceiving("test-account-service")
+				.path("/withdraw/1/1000").method("PUT").willRespondWith().status(200)
+				.body("{\"id\":\"1\",\"number\":\"123\",\"balance\":4000}", "application/json").toPact();
 	}
 
 	@Test
 	@PactVerification(fragment = "callAccountClient")
-	public void verifyAccountsPact() {
-		List<Account> accounts = accountClient.findByCustomer("1");
-		Assert.assertEquals(3, accounts.size());
+	public void verifyAccountWithrawPact() {
+		Account account = accountClient.withdraw("1", 1000);
+		Assert.assertNotNull(account);
+		Assert.assertEquals(4000, account.getBalance());
+		Assert.assertEquals("1", account.getId());
 	}
 
 }

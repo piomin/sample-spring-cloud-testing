@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>pl.piomin.services</groupId>
-		<artifactId>sample-spring-cloud-comm</artifactId>
+		<artifactId>sample-spring-cloud-testing</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>account-service</artifactId>
@@ -37,6 +37,12 @@
 		    <version>3.5.12</version>
 		    <scope>test</scope>
 		</dependency>
+		<dependency>
+		    <groupId>au.com.dius</groupId>
+		    <artifactId>pact-jvm-provider-spring_2.12</artifactId>
+		    <version>3.5.12</version>
+		    <scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -44,6 +50,14 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>au.com.dius</groupId>
+				<artifactId>pact-jvm-provider-maven_2.12</artifactId>
+				<version>3.5.12</version>
+				<configuration>
+					<pactBrokerUrl>http://192.168.99.100:9080</pactBrokerUrl>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
