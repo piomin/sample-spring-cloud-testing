@@ -36,16 +36,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>io.specto</groupId>
-			<artifactId>hoverfly-java</artifactId>
-			<version>0.9.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>au.com.dius</groupId>
-			<artifactId>pact-jvm-consumer-junit_2.12</artifactId>
-			<version>3.5.12</version>
-			<scope>test</scope>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-starter-contract-stub-runner</artifactId>
+		    <scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -54,14 +47,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>au.com.dius</groupId>
-				<artifactId>pact-jvm-provider-maven_2.12</artifactId>
-				<version>3.5.12</version>
-				<configuration>
-					<pactBrokerUrl>http://192.168.99.100:9080</pactBrokerUrl>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>

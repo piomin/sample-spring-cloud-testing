@@ -18,7 +18,7 @@ response {
       customerId: fromRequest().path(1)
 	], [
 	  id: $(regex('[0-9]{5}')),
-      number: '124',
+      number: '125',
       balance: 5000,
       customerId: fromRequest().path(1)
 	]
