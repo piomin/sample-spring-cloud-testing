@@ -24,7 +24,7 @@ import pl.piomin.services.customer.model.Account;
 	"account-service.ribbon.eureka.enabled: false",
 	"eureka.client.enabled: false",
 })
-public class CustomerConsumerContractTest {
+public class AccountContractTest {
 
 	@Rule
 	public PactProviderRuleMk2 stubProvider = new PactProviderRuleMk2("customerServiceProvider", "localhost", 8092, this);

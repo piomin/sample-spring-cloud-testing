@@ -35,18 +35,6 @@
 			<artifactId>de.flapdoodle.embed.mongo</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>io.specto</groupId>
-			<artifactId>hoverfly-java</artifactId>
-			<version>0.9.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>au.com.dius</groupId>
-			<artifactId>pact-jvm-consumer-junit_2.12</artifactId>
-			<version>3.5.12</version>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 
 	<build>
