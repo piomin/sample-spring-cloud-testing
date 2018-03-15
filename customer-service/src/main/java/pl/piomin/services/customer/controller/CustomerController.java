@@ -57,6 +57,11 @@ public class CustomerController {
 		return c;
 	}
 	
+	@GetMapping
+	public List<Customer> findAll() {
+		return repository.findAll();
+	}
+	
 	@PostMapping("/ids")
 	public List<Customer> find(@RequestBody List<String> ids) {
 		return repository.findByIdIn(ids);

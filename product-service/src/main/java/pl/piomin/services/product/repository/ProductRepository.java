@@ -8,6 +8,6 @@ import pl.piomin.services.product.model.Product;
 
 public interface ProductRepository extends MongoRepository<Product, String> {
 	
-	List<Product> findByIds(List<String> ids);
+	List<Product> findByIdIn(List<String> ids);
 	
 }

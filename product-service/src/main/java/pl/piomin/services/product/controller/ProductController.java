@@ -45,9 +45,14 @@ public class ProductController {
 		return repository.findOne(id);
 	}
 	
+	@GetMapping
+	public List<Product> findAll() {
+		return repository.findAll();
+	}
+	
 	@PostMapping("/ids")
 	public List<Product> find(@RequestBody List<String> ids) throws JsonProcessingException {
-		List<Product> products = repository.findByIds(ids);
+		List<Product> products = repository.findByIdIn(ids);
 		LOGGER.info("Products found: {}", mapper.writeValueAsString(Collections.singletonMap("count", products.size())));
 		return products;
 	}
