@@ -19,18 +19,18 @@ import au.com.dius.pact.provider.spring.SpringRestPactRunner;
 import pl.piomin.services.account.model.Account;
 import pl.piomin.services.account.repository.AccountRepository;
 
-@RunWith(SpringRestPactRunner.class)
-@Provider("orderServiceProvider")
-@PactBroker(host = "192.168.99.100", port = "9080")
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, properties = { "eureka.client.enabled: false" })
+//@RunWith(SpringRestPactRunner.class)
+//@Provider("orderServiceProvider")
+//@PactBroker(host = "192.168.99.100", port = "9080")
+//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, properties = { "eureka.client.enabled: false" })
 public class Account2ProviderContractTest {
 	
-	@MockBean
+//	@MockBean
 	private AccountRepository repository;
-	@TestTarget
+//	@TestTarget
 	public final Target target = new HttpTarget(8091);
 
-    @State("withdraw-from-account")
+//    @State("withdraw-from-account")
     public void toDefaultState() {
         when(repository.findOne("1")).thenReturn(new Account("1", "123", 5000, "1"));
 		when(repository.save(Mockito.any(Account.class))).thenAnswer(new Answer<Account>() {

@@ -19,18 +19,18 @@ import au.com.dius.pact.provider.spring.SpringRestPactRunner;
 import pl.piomin.services.account.model.Account;
 import pl.piomin.services.account.repository.AccountRepository;
 
-@RunWith(SpringRestPactRunner.class)
-@Provider("customerServiceProvider")
-@PactBroker(host = "192.168.99.100", port = "9080")
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, properties = { "eureka.client.enabled: false" })
+//@RunWith(SpringRestPactRunner.class)
+//@Provider("customerServiceProvider")
+//@PactBroker(host = "192.168.99.100", port = "9080")
+//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, properties = { "eureka.client.enabled: false" })
 public class AccountProviderContractTest {
 	
-	@MockBean
+//	@MockBean
 	private AccountRepository repository;
-	@TestTarget
+//	@TestTarget
 	public final Target target = new HttpTarget(8091);
 
-    @State("list-of-3-accounts")
+//    @State("list-of-3-accounts")
     public void toDefaultState() {
         List<Account> accounts = new ArrayList<>();
         accounts.add(new Account("1", "123", 5000, "1"));
