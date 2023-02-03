@@ -35,7 +35,7 @@ public class CustomerComponentTest {
     @ClassRule
     public static HoverflyRule hoverflyRule = HoverflyRule
             .inSimulationMode(dsl(
-            	service("account-service:8080")
+            	service("localhost:8092")
             		.andDelay(200, TimeUnit.MILLISECONDS).forAll()
             		.get(startsWith("/customer/"))
             		.willReturn(success("[{\"id\":\"1\",\"number\":\"1234567890\",\"balance\":5000}]", "application/json"))))
