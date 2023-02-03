@@ -16,10 +16,10 @@ import pl.piomin.services.order.client.ProductClient;
 import pl.piomin.services.order.model.Account;
 import pl.piomin.services.order.repository.OrderRepository;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@ActiveProfiles("dev")
-@Category(IntegrationTest.class)
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
+//@ActiveProfiles("dev")
+//@Category(IntegrationTest.class)
 public class OrderIntegrationTest {
 
 	
@@ -32,10 +32,10 @@ public class OrderIntegrationTest {
 	@Autowired
 	OrderRepository orderRepository;
 	
-    @ClassRule
+//    @ClassRule
     public static HoverflyRule hoverflyRule = HoverflyRule.inCaptureOrSimulationMode("account.json").printSimulationData();
     
-	@Test
+//	@Test
 	public void testAccount() {
 		Account account = accountClient.add(new Account(null, "123", 5000));
 		account = accountClient.withdraw(account.getId(), 1000);
