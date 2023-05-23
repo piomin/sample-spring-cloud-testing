@@ -11,9 +11,10 @@ import pl.piomin.services.order.model.Account;
 @FeignClient(name = "account-service")
 public interface AccountClient {
 
-	@PostMapping("/")
-	Account add(@RequestBody Account account);
-	@PutMapping("/withdraw/{accountId}/{amount}")
-	Account withdraw(@PathVariable("accountId") String id, @PathVariable("amount") int amount);
+    @PostMapping("/")
+    Account add(@RequestBody Account account);
+
+    @PutMapping("/withdraw/{accountId}/{amount}")
+    Account withdraw(@PathVariable("accountId") String id, @PathVariable("amount") int amount);
 
 }

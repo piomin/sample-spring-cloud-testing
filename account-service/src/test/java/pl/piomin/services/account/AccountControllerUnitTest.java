@@ -31,44 +31,44 @@ import pl.piomin.services.account.repository.AccountRepository;
 @WebMvcTest(AccountController.class)
 public class AccountControllerUnitTest {
 
-	ObjectMapper mapper = new ObjectMapper();
-	
-	@Autowired
+    ObjectMapper mapper = new ObjectMapper();
+
+    @Autowired
     MockMvc mvc;
-	@MockBean
-	AccountRepository repository;
-	
-	@Test
-	public void testAdd() throws Exception {
-		Account account = new Account("1234567890", 5000, "1");
-		when(repository.save(Mockito.any(Account.class))).thenReturn(new Account("1","1234567890", 5000, "1"));
-		mvc.perform(post("/").contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(account)))
-			.andExpect(status().isOk());
-	}
-	
-	@Test
-	public void testFind() throws Exception {
-		Account account = new Account("1", "1234567890", 5000, "1");
-		when(repository.findOne("1")).thenReturn(account);
-		mvc.perform(get("/1").contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(account)))
-			.andExpect(status().isOk());
-	}
-	
-	@Test
-	public void testWithdraw() throws Exception {
-		Account account = new Account("1", "1234567890", 5000, "1");
-		when(repository.findOne("1")).thenReturn(account);
-		when(repository.save(Mockito.any(Account.class))).thenAnswer(new Answer<Account>() {
-			@Override
-			public Account answer(InvocationOnMock invocation) throws Throwable {
-				Account a = invocation.getArgumentAt(0, Account.class);
-				return a;
-			}
-		});
-		mvc.perform(put("/withdraw/1/1000"))
-			.andExpect(status().isOk())
-			.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
-			.andExpect(jsonPath("$.balance", is(4000)));
-	}
-	
+    @MockBean
+    AccountRepository repository;
+
+    @Test
+    public void testAdd() throws Exception {
+        Account account = new Account("1234567890", 5000, "1");
+        when(repository.save(Mockito.any(Account.class))).thenReturn(new Account("1", "1234567890", 5000, "1"));
+        mvc.perform(post("/").contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(account)))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testFind() throws Exception {
+        Account account = new Account("1", "1234567890", 5000, "1");
+        when(repository.findOne("1")).thenReturn(account);
+        mvc.perform(get("/1").contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(account)))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testWithdraw() throws Exception {
+        Account account = new Account("1", "1234567890", 5000, "1");
+        when(repository.findOne("1")).thenReturn(account);
+        when(repository.save(Mockito.any(Account.class))).thenAnswer(new Answer<Account>() {
+            @Override
+            public Account answer(InvocationOnMock invocation) throws Throwable {
+                Account a = invocation.getArgumentAt(0, Account.class);
+                return a;
+            }
+        });
+        mvc.perform(put("/withdraw/1/1000"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(jsonPath("$.balance", is(4000)));
+    }
+
 }

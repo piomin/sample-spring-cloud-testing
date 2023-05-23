@@ -2,42 +2,42 @@ package pl.piomin.services.order.model;
 
 public class Account {
 
-	private String id;
-	private String number;
-	private int balance;
+    private String id;
+    private String number;
+    private int balance;
 
-	public Account() {
+    public Account() {
 
-	}
-	
-	public Account(String id, String number, int balance) {
-		this.id = id;
-		this.number = number;
-		this.balance = balance;
-	}
+    }
 
-	public String getId() {
-		return id;
-	}
+    public Account(String id, String number, int balance) {
+        this.id = id;
+        this.number = number;
+        this.balance = balance;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public String getNumber() {
-		return number;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setNumber(String number) {
-		this.number = number;
-	}
+    public String getNumber() {
+        return number;
+    }
 
-	public int getBalance() {
-		return balance;
-	}
+    public void setNumber(String number) {
+        this.number = number;
+    }
 
-	public void setBalance(int balance) {
-		this.balance = balance;
-	}
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
 
 }

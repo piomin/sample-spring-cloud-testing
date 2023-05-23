@@ -23,38 +23,38 @@ import pl.piomin.services.product.repository.ProductRepository;
 @RestController
 public class ProductController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
-	
-	private ObjectMapper mapper = new ObjectMapper();
-	
-	@Autowired
-	ProductRepository repository;
-	
-	@PostMapping
-	public Product add(@RequestBody Product product) {
-		return repository.save(product);
-	}
-	
-	@PutMapping
-	public Product update(@RequestBody Product product) {
-		return repository.save(product);
-	}
-	
-	@GetMapping("/{id}")
-	public Product findById(@PathVariable("id") String id) {
-		return repository.findOne(id);
-	}
-	
-	@PostMapping("/ids")
-	public List<Product> find(@RequestBody List<String> ids) throws JsonProcessingException {
-		List<Product> products = repository.findByIds(ids);
-		LOGGER.info("Products found: {}", mapper.writeValueAsString(Collections.singletonMap("count", products.size())));
-		return products;
-	}
-	
-	@DeleteMapping("/{id}")
-	public void delete(@PathVariable("id") String id) {
-		repository.delete(id);
-	}
-	
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
+
+    private ObjectMapper mapper = new ObjectMapper();
+
+    @Autowired
+    ProductRepository repository;
+
+    @PostMapping
+    public Product add(@RequestBody Product product) {
+        return repository.save(product);
+    }
+
+    @PutMapping
+    public Product update(@RequestBody Product product) {
+        return repository.save(product);
+    }
+
+    @GetMapping("/{id}")
+    public Product findById(@PathVariable("id") String id) {
+        return repository.findOne(id);
+    }
+
+    @PostMapping("/ids")
+    public List<Product> find(@RequestBody List<String> ids) throws JsonProcessingException {
+        List<Product> products = repository.findByIds(ids);
+        LOGGER.info("Products found: {}", mapper.writeValueAsString(Collections.singletonMap("count", products.size())));
+        return products;
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") String id) {
+        repository.delete(id);
+    }
+
 }

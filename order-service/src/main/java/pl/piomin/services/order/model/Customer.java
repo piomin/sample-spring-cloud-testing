@@ -5,53 +5,53 @@ import java.util.List;
 
 public class Customer {
 
-	private String id;
-	private String name;
-	private CustomerType type;
-	private List<Account> accounts = new ArrayList<>();
+    private String id;
+    private String name;
+    private CustomerType type;
+    private List<Account> accounts = new ArrayList<>();
 
-	public Customer() {
+    public Customer() {
 
-	}
-	
-	public Customer(String id, String name, CustomerType type, List<Account> accounts) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.type = type;
-		this.accounts = accounts;
-	}
+    }
 
-	public String getId() {
-		return id;
-	}
+    public Customer(String id, String name, CustomerType type, List<Account> accounts) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.accounts = accounts;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public CustomerType getType() {
-		return type;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setType(CustomerType type) {
-		this.type = type;
-	}
+    public CustomerType getType() {
+        return type;
+    }
 
-	public List<Account> getAccounts() {
-		return accounts;
-	}
+    public void setType(CustomerType type) {
+        this.type = type;
+    }
 
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
-	}
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+    }
 
 }

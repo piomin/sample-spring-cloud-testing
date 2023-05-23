@@ -24,26 +24,26 @@ import pl.piomin.services.order.model.Account;
 //})
 public class OrderConsumerContractTest {
 
-//	@Rule
-	public PactProviderRuleMk2 stubProvider = new PactProviderRuleMk2("orderServiceProvider", "localhost", 8092, this);
+    //	@Rule
+    public PactProviderRuleMk2 stubProvider = new PactProviderRuleMk2("orderServiceProvider", "localhost", 8092, this);
 
-	@Autowired
-	private AccountClient accountClient;
+    @Autowired
+    private AccountClient accountClient;
 
-//	@Pact(state = "withdraw-from-account", provider = "orderServiceProvider", consumer = "accountClient")
-	public RequestResponsePact callAccountClient(PactDslWithProvider builder) {
-		return builder.given("withdraw-from-account").uponReceiving("test-account-service")
-				.path("/withdraw/1/1000").method("PUT").willRespondWith().status(200)
-				.body("{\"id\":\"1\",\"number\":\"123\",\"balance\":4000}", "application/json").toPact();
-	}
+    //	@Pact(state = "withdraw-from-account", provider = "orderServiceProvider", consumer = "accountClient")
+    public RequestResponsePact callAccountClient(PactDslWithProvider builder) {
+        return builder.given("withdraw-from-account").uponReceiving("test-account-service")
+                .path("/withdraw/1/1000").method("PUT").willRespondWith().status(200)
+                .body("{\"id\":\"1\",\"number\":\"123\",\"balance\":4000}", "application/json").toPact();
+    }
 
-//	@Test
+    //	@Test
 //	@PactVerification(fragment = "callAccountClient")
-	public void verifyAccountWithrawPact() {
-		Account account = accountClient.withdraw("1", 1000);
-		Assert.assertNotNull(account);
-		Assert.assertEquals(4000, account.getBalance());
-		Assert.assertEquals("1", account.getId());
-	}
+    public void verifyAccountWithrawPact() {
+        Account account = accountClient.withdraw("1", 1000);
+        Assert.assertNotNull(account);
+        Assert.assertEquals(4000, account.getBalance());
+        Assert.assertEquals("1", account.getId());
+    }
 
 }
