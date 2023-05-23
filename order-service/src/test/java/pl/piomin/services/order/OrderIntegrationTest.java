@@ -22,24 +22,24 @@ import pl.piomin.services.order.repository.OrderRepository;
 //@Category(IntegrationTest.class)
 public class OrderIntegrationTest {
 
-	
-	@Autowired
-	AccountClient accountClient;
-	@Autowired
-	CustomerClient customerClient;
-	@Autowired
-	ProductClient productClient;
-	@Autowired
-	OrderRepository orderRepository;
-	
-//    @ClassRule
+
+    @Autowired
+    AccountClient accountClient;
+    @Autowired
+    CustomerClient customerClient;
+    @Autowired
+    ProductClient productClient;
+    @Autowired
+    OrderRepository orderRepository;
+
+    //    @ClassRule
     public static HoverflyRule hoverflyRule = HoverflyRule.inCaptureOrSimulationMode("account.json").printSimulationData();
-    
-//	@Test
-	public void testAccount() {
-		Account account = accountClient.add(new Account(null, "123", 5000));
-		account = accountClient.withdraw(account.getId(), 1000);
-		System.out.println(account);
-	}
-	
+
+    //	@Test
+    public void testAccount() {
+        Account account = accountClient.add(new Account(null, "123", 5000));
+        account = accountClient.withdraw(account.getId(), 1000);
+        System.out.println(account);
+    }
+
 }

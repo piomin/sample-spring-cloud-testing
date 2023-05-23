@@ -1,4 +1,5 @@
 package pl.piomin.services.customer;
+
 import static io.specto.hoverfly.junit.core.SimulationSource.dsl;
 import static io.specto.hoverfly.junit.dsl.HoverflyDsl.service;
 import static io.specto.hoverfly.junit.dsl.ResponseCreators.success;
@@ -29,32 +30,32 @@ import pl.piomin.services.customer.model.CustomerType;
 @ActiveProfiles({"test", "no-discovery"})
 public class CustomerComponentTest {
 
-	@Autowired
-	TestRestTemplate restTemplate;
-	
+    @Autowired
+    TestRestTemplate restTemplate;
+
     @ClassRule
     public static HoverflyRule hoverflyRule = HoverflyRule
             .inSimulationMode(dsl(
-            	service("account-service:8080")
-            		.andDelay(200, TimeUnit.MILLISECONDS).forAll()
-            		.get(startsWith("/customer/"))
-            		.willReturn(success("[{\"id\":\"1\",\"number\":\"1234567890\",\"balance\":5000}]", "application/json"))))
+                    service("account-service:8080")
+                            .andDelay(200, TimeUnit.MILLISECONDS).forAll()
+                            .get(startsWith("/customer/"))
+                            .willReturn(success("[{\"id\":\"1\",\"number\":\"1234567890\",\"balance\":5000}]", "application/json"))))
             .printSimulationData();
-    
-	@Test
-	public void testAdd() {
-		Customer customer = new Customer("Test1", CustomerType.REGULAR);
-		customer = restTemplate.postForObject("/", customer, Customer.class);
-		Assert.assertNotNull(customer);
-	}
-	
-	@Test
-	public void testFindWithAccounts() {
-		Customer customer = new Customer("Test2", CustomerType.REGULAR);
-		customer = restTemplate.postForObject("/", customer, Customer.class);
+
+    @Test
+    public void testAdd() {
+        Customer customer = new Customer("Test1", CustomerType.REGULAR);
+        customer = restTemplate.postForObject("/", customer, Customer.class);
+        Assert.assertNotNull(customer);
+    }
+
+    @Test
+    public void testFindWithAccounts() {
+        Customer customer = new Customer("Test2", CustomerType.REGULAR);
+        customer = restTemplate.postForObject("/", customer, Customer.class);
 //		customer = restTemplate.getForObject("/withAccounts/{id}", Customer.class, customer.getId());
-		Assert.assertNotNull(customer);
+        Assert.assertNotNull(customer);
 //		Assert.assertNotNull(customer.getAccounts());
 //		Assert.assertEquals(1, customer.getAccounts().size());
-	}
+    }
 }

@@ -10,7 +10,7 @@ import pl.piomin.services.order.model.Product;
 @FeignClient(name = "product-service")
 public interface ProductClient {
 
-	@PostMapping("/ids")
-	List<Product> findByIds(List<String> ids);
-	
+    @PostMapping("/ids")
+    List<Product> findByIds(List<String> ids);
+
 }

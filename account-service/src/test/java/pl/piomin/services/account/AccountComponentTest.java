@@ -16,15 +16,15 @@ import pl.piomin.services.account.model.Account;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ActiveProfiles({"test", "no-discovery"})
 public class AccountComponentTest {
-	
-	@Autowired
-	TestRestTemplate restTemplate;
-	
-	@Test
-	public void testAdd() throws Exception {
-		Account account = new Account("1234567890", 5000, "1");
-		account = restTemplate.postForObject("/", account, Account.class);
-		Assert.assertNotNull(account);
-	}
-	
+
+    @Autowired
+    TestRestTemplate restTemplate;
+
+    @Test
+    public void testAdd() throws Exception {
+        Account account = new Account("1234567890", 5000, "1");
+        account = restTemplate.postForObject("/", account, Account.class);
+        Assert.assertNotNull(account);
+    }
+
 }
