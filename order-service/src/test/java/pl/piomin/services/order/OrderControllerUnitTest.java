@@ -1,15 +1,6 @@
 package pl.piomin.services.order;
 
-import static org.hamcrest.Matchers.is;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import java.util.Collections;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -21,20 +12,21 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import pl.piomin.services.order.client.AccountClient;
 import pl.piomin.services.order.client.CustomerClient;
 import pl.piomin.services.order.client.ProductClient;
 import pl.piomin.services.order.controller.OrderController;
-import pl.piomin.services.order.model.Account;
-import pl.piomin.services.order.model.Customer;
-import pl.piomin.services.order.model.CustomerType;
-import pl.piomin.services.order.model.Order;
-import pl.piomin.services.order.model.OrderStatus;
-import pl.piomin.services.order.model.Product;
+import pl.piomin.services.order.model.*;
 import pl.piomin.services.order.repository.OrderRepository;
+
+import java.util.Collections;
+import java.util.Optional;
+
+import static org.hamcrest.Matchers.is;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(OrderController.class)
@@ -56,12 +48,12 @@ public class OrderControllerUnitTest {
     @Test
     public void testAccept() throws Exception {
         Order order = new Order("1", OrderStatus.ACCEPTED, 2000, "1", "1", null);
-        when(repository.findOne("1")).thenReturn(order);
+        when(repository.findById("1")).thenReturn(Optional.of(order));
         when(accountClient.withdraw(order.getAccountId(), order.getPrice())).thenReturn(new Account("1", "123", 0));
         when(repository.save(Mockito.any(Order.class))).thenAnswer(new Answer<Order>() {
             @Override
             public Order answer(InvocationOnMock invocation) throws Throwable {
-                Order o = invocation.getArgumentAt(0, Order.class);
+                Order o = invocation.getArgument(0, Order.class);
                 return o;
             }
         });
@@ -81,7 +73,7 @@ public class OrderControllerUnitTest {
         when(repository.save(Mockito.any(Order.class))).thenAnswer(new Answer<Order>() {
             @Override
             public Order answer(InvocationOnMock invocation) throws Throwable {
-                Order o = invocation.getArgumentAt(0, Order.class);
+                Order o = invocation.getArgument(0, Order.class);
                 o.setId("1");
                 return o;
             }

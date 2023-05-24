@@ -45,14 +45,14 @@ public class CustomerController {
 	
 	@GetMapping("/{id}")
 	public Customer findById(@PathVariable("id") String id) {
-		return repository.findOne(id);
+		return repository.findById(id).orElseThrow();
 	}
 	
 	@GetMapping("/withAccounts/{id}")
 	public Customer findByIdWithAccounts(@PathVariable("id") String id) throws JsonProcessingException {
 		List<Account> accounts = accountClient.findByCustomer(id);
 		LOGGER.info("Accounts found: {}", mapper.writeValueAsString(accounts));
-		Customer c = repository.findOne(id);
+		Customer c = repository.findById(id).orElseThrow();
 		c.setAccounts(accounts);
 		return c;
 	}
@@ -64,7 +64,7 @@ public class CustomerController {
 	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") String id) {
-		repository.delete(id);
+		repository.deleteById(id);
 	}
 	
 }

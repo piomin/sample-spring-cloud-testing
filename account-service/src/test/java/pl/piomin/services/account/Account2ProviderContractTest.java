@@ -32,14 +32,14 @@ public class Account2ProviderContractTest {
 
 //    @State("withdraw-from-account")
     public void toDefaultState() {
-        when(repository.findOne("1")).thenReturn(new Account("1", "123", 5000, "1"));
-		when(repository.save(Mockito.any(Account.class))).thenAnswer(new Answer<Account>() {
-			@Override
-			public Account answer(InvocationOnMock invocation) throws Throwable {
-				Account a = invocation.getArgumentAt(0, Account.class);
-				return a;
-			}
-		});
+//        when(repository.findById("1")).thenReturn(new Account("1", "123", 5000, "1"));
+//		when(repository.save(Mockito.any(Account.class))).thenAnswer(new Answer<Account>() {
+//			@Override
+//			public Account answer(InvocationOnMock invocation) throws Throwable {
+//				Account a = invocation.getArgumentAt(0, Account.class);
+//				return a;
+//			}
+//		});
     }
 	
 }

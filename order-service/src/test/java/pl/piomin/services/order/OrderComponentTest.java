@@ -55,7 +55,7 @@ public class OrderComponentTest {
 		Order order = new Order(null, OrderStatus.ACCEPTED, 1000, "1", "1", Collections.singletonList("1"));
 		order = orderRepository.save(order);
 		restTemplate.put("/{id}", null, order.getId());
-		order = orderRepository.findOne(order.getId());
+		order = orderRepository.findById(order.getId()).orElseThrow();
 		Assert.assertEquals(OrderStatus.DONE, order.getStatus());
 	}
 

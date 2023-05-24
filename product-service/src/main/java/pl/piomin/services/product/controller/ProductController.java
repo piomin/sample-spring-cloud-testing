@@ -42,7 +42,7 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public Product findById(@PathVariable("id") String id) {
-        return repository.findOne(id);
+        return repository.findById(id).orElseThrow();
     }
 
     @PostMapping("/ids")
@@ -54,7 +54,7 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") String id) {
-        repository.delete(id);
+        repository.deleteById(id);
     }
 
 }
