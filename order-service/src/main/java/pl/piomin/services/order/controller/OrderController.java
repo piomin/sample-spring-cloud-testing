@@ -69,7 +69,7 @@ public class OrderController {
 
     @PutMapping("/{id}")
     public Order accept(@PathVariable String id) throws JsonProcessingException {
-        final Order order = repository.findOne(id);
+        final Order order = repository.findById(id).orElseThrow();
         LOGGER.info("Order found: {}", mapper.writeValueAsString(order));
         accountClient.withdraw(order.getAccountId(), order.getPrice());
         HashMap<String, Object> log = new HashMap<>();

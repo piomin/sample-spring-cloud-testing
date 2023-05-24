@@ -42,7 +42,7 @@ public class AccountController {
 
     @PutMapping("/withdraw/{id}/{amount}")
     public Account withdraw(@PathVariable("id") String id, @PathVariable("amount") int amount) throws JsonProcessingException {
-        Account account = repository.findOne(id);
+        Account account = repository.findById(id).orElseThrow();
         LOGGER.info("Account found: {}", mapper.writeValueAsString(account));
         account.setBalance(account.getBalance() - amount);
         LOGGER.info("Current balance: {}", mapper.writeValueAsString(Collections.singletonMap("balance", account.getBalance())));
@@ -51,7 +51,7 @@ public class AccountController {
 
     @GetMapping("/{id}")
     public Account findById(@PathVariable("id") String id) {
-        return repository.findOne(id);
+        return repository.findById(id).orElseThrow();
     }
 
     @GetMapping("/customer/{customerId}")
@@ -68,7 +68,7 @@ public class AccountController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") String id) {
-        repository.delete(id);
+        repository.deleteById(id);
     }
 
 }
