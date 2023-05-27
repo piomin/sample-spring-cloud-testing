@@ -8,7 +8,9 @@ server:
  
 ---
 spring:
-  profiles: dev
+  config:
+    activate:
+      on-profile: dev
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration
   data:
@@ -21,7 +23,9 @@ spring:
 
 ---
 spring:
-  profiles: test
+  config:
+    activate:
+      on-profile: test
   data:
     mongodb:
       host: localhost
@@ -29,7 +33,9 @@ spring:
 
 ---
 spring:
-  profiles: no-discovery
+  config:
+    activate:
+      on-profile: no-discovery
 eureka:
   client:
     enabled: false

@@ -14,7 +14,9 @@ logging:
       
 ---
 spring:
-  profiles: dev
+  config:
+    activate:
+      on-profile: dev
   data:
     mongodb:
       host: 192.168.99.100
@@ -25,7 +27,9 @@ spring:
 
 ---
 spring:
-  profiles: test
+  config:
+    activate:
+      on-profile: test
   data:
     mongodb:
       host: localhost
@@ -33,7 +37,9 @@ spring:
 
 ---
 spring:
-  profiles: no-discovery
+  config:
+    activate:
+      on-profile: no-discovery
 eureka:
   client:
     enabled: false

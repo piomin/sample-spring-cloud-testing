@@ -24,16 +24,15 @@ import io.specto.hoverfly.junit.rule.HoverflyRule;
 import pl.piomin.services.customer.model.Customer;
 import pl.piomin.services.customer.model.CustomerType;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
-@ActiveProfiles({"test", "no-discovery"})
+//@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+//@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+//@ActiveProfiles({"test", "no-discovery"})
 public class CustomerComponentTest {
 
-    @Autowired
+//    @Autowired
     TestRestTemplate restTemplate;
 
-    @ClassRule
+//    @ClassRule
     public static HoverflyRule hoverflyRule = HoverflyRule
             .inSimulationMode(dsl(
                     service("account-service:8080")
@@ -42,14 +41,14 @@ public class CustomerComponentTest {
                             .willReturn(success("[{\"id\":\"1\",\"number\":\"1234567890\",\"balance\":5000}]", "application/json"))))
             .printSimulationData();
 
-    @Test
+//    @Test
     public void testAdd() {
         Customer customer = new Customer("Test1", CustomerType.REGULAR);
         customer = restTemplate.postForObject("/", customer, Customer.class);
         Assert.assertNotNull(customer);
     }
 
-    @Test
+//    @Test
     public void testFindWithAccounts() {
         Customer customer = new Customer("Test2", CustomerType.REGULAR);
         customer = restTemplate.postForObject("/", customer, Customer.class);

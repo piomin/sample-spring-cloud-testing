@@ -8,7 +8,9 @@ logging:
        
 ---
 spring:
-  profiles: zone1
+  config:
+    activate:
+      on-profile: zone1
 eureka:
   instance:
     metadataMap:
@@ -22,7 +24,9 @@ server:
 
 ---
 spring:
-  profiles: zone2
+  config:
+    activate:
+      on-profile: zone2
 eureka:
   instance:
     metadataMap:
