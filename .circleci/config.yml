@@ -15,7 +15,7 @@ jobs:
           steps:
             - run:
                 name: Run Tests
-                command: mvn package pact:publish -DskipTests
+                command: mvn clean package # pact:publish -DskipTests
       - maven/with_cache:
           steps:
             - run:
