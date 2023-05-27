@@ -1,15 +1,6 @@
 package pl.piomin.services.order;
 
-import org.junit.ClassRule;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import io.specto.hoverfly.junit.rule.HoverflyRule;
 import pl.piomin.services.order.client.AccountClient;
 import pl.piomin.services.order.client.CustomerClient;
 import pl.piomin.services.order.client.ProductClient;
@@ -33,7 +24,7 @@ public class OrderIntegrationTest {
     OrderRepository orderRepository;
 
     //    @ClassRule
-    public static HoverflyRule hoverflyRule = HoverflyRule.inCaptureOrSimulationMode("account.json").printSimulationData();
+//    public static HoverflyRule hoverflyRule = HoverflyRule.inCaptureOrSimulationMode("account.json").printSimulationData();
 
     //	@Test
     public void testAccount() {

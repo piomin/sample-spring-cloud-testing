@@ -45,12 +45,12 @@
             <version>0.14.4</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>au.com.dius</groupId>
-            <artifactId>pact-jvm-consumer-junit_2.12</artifactId>
-            <version>3.6.15</version>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>au.com.dius</groupId>-->
+<!--            <artifactId>pact-jvm-consumer-junit_2.12</artifactId>-->
+<!--            <version>3.6.15</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>
@@ -59,14 +59,14 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
-                <groupId>au.com.dius</groupId>
-                <artifactId>pact-jvm-provider-maven_2.12</artifactId>
-                <version>3.5.12</version>
-                <configuration>
-                    <pactBrokerUrl>http://localhost:9292</pactBrokerUrl>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>au.com.dius</groupId>-->
+<!--                <artifactId>pact-jvm-provider-maven_2.12</artifactId>-->
+<!--                <version>3.5.12</version>-->
+<!--                <configuration>-->
+<!--                    <pactBrokerUrl>http://localhost:9292</pactBrokerUrl>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 

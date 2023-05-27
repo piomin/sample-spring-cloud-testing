@@ -30,12 +30,12 @@ public class AccountController {
     @Autowired
     AccountRepository repository;
 
-    @PostMapping
+    @PostMapping("/")
     public Account add(@RequestBody Account account) {
         return repository.save(account);
     }
 
-    @PutMapping
+    @PutMapping("/")
     public Account update(@RequestBody Account account) {
         return repository.save(account);
     }

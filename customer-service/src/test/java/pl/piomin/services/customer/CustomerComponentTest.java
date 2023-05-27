@@ -4,15 +4,10 @@ import static io.specto.hoverfly.junit.core.SimulationSource.dsl;
 import static io.specto.hoverfly.junit.dsl.HoverflyDsl.service;
 import static io.specto.hoverfly.junit.dsl.ResponseCreators.success;
 import static io.specto.hoverfly.junit.dsl.matchers.HoverflyMatchers.startsWith;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Assert;
-import org.junit.ClassRule;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
@@ -45,7 +40,7 @@ public class CustomerComponentTest {
     public void testAdd() {
         Customer customer = new Customer("Test1", CustomerType.REGULAR);
         customer = restTemplate.postForObject("/", customer, Customer.class);
-        Assert.assertNotNull(customer);
+        assertNotNull(customer);
     }
 
 //    @Test
@@ -53,7 +48,7 @@ public class CustomerComponentTest {
         Customer customer = new Customer("Test2", CustomerType.REGULAR);
         customer = restTemplate.postForObject("/", customer, Customer.class);
 //		customer = restTemplate.getForObject("/withAccounts/{id}", Customer.class, customer.getId());
-        Assert.assertNotNull(customer);
+        assertNotNull(customer);
 //		Assert.assertNotNull(customer.getAccounts());
 //		Assert.assertEquals(1, customer.getAccounts().size());
     }

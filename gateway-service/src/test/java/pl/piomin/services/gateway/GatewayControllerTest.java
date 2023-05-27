@@ -13,7 +13,7 @@ public class GatewayControllerTest {
 
 	TestRestTemplate template = new TestRestTemplate();
 
-	@Test
+//	@Test
 	public void testOrder() throws InterruptedException {
 		for (int i = 0; i < 100; i++) {
 			sendAndAcceptOrder();

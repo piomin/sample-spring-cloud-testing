@@ -1,6 +1,8 @@
-spring:  
+spring:
   application:
     name: account-service
+#  main:
+#    allow-bean-definition-overriding: true
 
 server:  
   port: ${PORT:8091}

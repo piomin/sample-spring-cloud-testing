@@ -31,20 +31,30 @@
             <scope>test</scope>
         </dependency>
 <!--        <dependency>-->
-<!--            <groupId>de.flapdoodle.embed</groupId>-->
-<!--            <artifactId>de.flapdoodle.embed.mongo</artifactId>-->
+<!--            <groupId>au.com.dius</groupId>-->
+<!--            <artifactId>pact-jvm-provider-junit_2.12</artifactId>-->
+<!--            <version>3.6.15</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>au.com.dius</groupId>-->
+<!--            <artifactId>pact-jvm-provider-spring_2.12</artifactId>-->
+<!--            <version>3.6.15</version>-->
 <!--            <scope>test</scope>-->
 <!--        </dependency>-->
         <dependency>
-            <groupId>au.com.dius</groupId>
-            <artifactId>pact-jvm-provider-junit_2.12</artifactId>
-            <version>3.6.15</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-testcontainers</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>au.com.dius</groupId>
-            <artifactId>pact-jvm-provider-spring_2.12</artifactId>
-            <version>3.6.15</version>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>mongodb</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -55,14 +65,14 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
-                <groupId>au.com.dius</groupId>
-                <artifactId>pact-jvm-provider-maven_2.12</artifactId>
-                <version>3.5.12</version>
-                <configuration>
-                    <pactBrokerUrl>http://localhost:9292</pactBrokerUrl>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>au.com.dius</groupId>-->
+<!--                <artifactId>pact-jvm-provider-maven_2.12</artifactId>-->
+<!--                <version>3.5.12</version>-->
+<!--                <configuration>-->
+<!--                    <pactBrokerUrl>http://localhost:9292</pactBrokerUrl>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 

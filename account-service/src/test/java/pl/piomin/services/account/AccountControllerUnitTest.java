@@ -60,7 +60,7 @@ public class AccountControllerUnitTest {
         });
         mvc.perform(put("/withdraw/1/1000"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.balance", is(4000)));
     }
 

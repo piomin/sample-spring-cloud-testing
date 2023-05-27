@@ -1,23 +1,12 @@
 package pl.piomin.services.account;
 
-import static org.mockito.Mockito.when;
+import pl.piomin.services.account.model.Account;
+import pl.piomin.services.account.repository.AccountRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-
-import au.com.dius.pact.provider.junit.Provider;
-import au.com.dius.pact.provider.junit.State;
-import au.com.dius.pact.provider.junit.loader.PactBroker;
-import au.com.dius.pact.provider.junit.target.HttpTarget;
-import au.com.dius.pact.provider.junit.target.Target;
-import au.com.dius.pact.provider.junit.target.TestTarget;
-import au.com.dius.pact.provider.spring.SpringRestPactRunner;
-import pl.piomin.services.account.model.Account;
-import pl.piomin.services.account.repository.AccountRepository;
+import static org.mockito.Mockito.when;
 
 //@RunWith(SpringRestPactRunner.class)
 //@Provider("customerServiceProvider")
@@ -28,7 +17,7 @@ public class AccountProviderContractTest {
     //	@MockBean
     private AccountRepository repository;
     //	@TestTarget
-    public final Target target = new HttpTarget(8091);
+//    public final Target target = new HttpTarget(8091);
 
     //    @State("list-of-3-accounts")
     public void toDefaultState() {
