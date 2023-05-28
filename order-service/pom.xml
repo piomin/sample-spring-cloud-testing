@@ -41,7 +41,7 @@
 <!--        </dependency>-->
         <dependency>
             <groupId>io.specto</groupId>
-            <artifactId>hoverfly-java</artifactId>
+            <artifactId>hoverfly-java-junit5</artifactId>
             <version>0.14.4</version>
             <scope>test</scope>
         </dependency>
@@ -51,6 +51,21 @@
 <!--            <version>3.6.15</version>-->
 <!--            <scope>test</scope>-->
 <!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-testcontainers</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>mongodb</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
