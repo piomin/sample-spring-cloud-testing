@@ -14,6 +14,7 @@ import pl.piomin.services.account.controller.AccountController;
 import pl.piomin.services.account.model.Account;
 import pl.piomin.services.account.repository.AccountRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.hamcrest.Matchers.is;
@@ -34,17 +35,33 @@ public class AccountControllerUnitTest {
     @Test
     public void testAdd() throws Exception {
         Account account = new Account("1234567890", 5000, "1");
-        when(repository.save(Mockito.any(Account.class))).thenReturn(new Account("1", "1234567890", 5000, "1"));
+        when(repository.save(Mockito.any(Account.class)))
+                .thenReturn(new Account("1", "1234567890", 5000, "1"));
         mvc.perform(post("/").contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(account)))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.id", is("1")));
     }
 
     @Test
     public void testFind() throws Exception {
         Account account = new Account("1", "1234567890", 5000, "1");
         when(repository.findById("1")).thenReturn(Optional.of(account));
-        mvc.perform(get("/1").contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(account)))
-                .andExpect(status().isOk());
+        mvc.perform(get("/1").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.number", is("1234567890")));
+    }
+
+    @Test
+    public void testFindByCustomerId() throws Exception {
+        Account account = new Account("1", "1234567890", 5000, "1");
+        Account account2 = new Account("2", "1234567891", 15000, "1");
+        when(repository.findByCustomerId("1")).thenReturn(List.of(account, account2));
+        mvc.perform(get("/customer/1").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.length()", is(2)));
     }
 
     @Test

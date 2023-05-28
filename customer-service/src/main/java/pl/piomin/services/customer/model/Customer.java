@@ -24,6 +24,12 @@ public class Customer {
 		this.type = type;
 	}
 
+	public Customer(String id, String name, CustomerType type) {
+		this.id = id;
+		this.name = name;
+		this.type = type;
+	}
+
 	public String getId() {
 		return id;
 	}

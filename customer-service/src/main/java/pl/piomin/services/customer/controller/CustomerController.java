@@ -33,12 +33,12 @@ public class CustomerController {
 	@Autowired
 	CustomerRepository repository;
 	
-	@PostMapping
+	@PostMapping("/")
 	public Customer add(@RequestBody Customer customer) {
 		return repository.save(customer);
 	}
 	
-	@PutMapping
+	@PutMapping("/")
 	public Customer update(@RequestBody Customer customer) {
 		return repository.save(customer);
 	}
