@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import pl.piomin.services.customer.client.AccountClient;
 import pl.piomin.services.customer.controller.CustomerController;
@@ -31,9 +32,9 @@ public class CustomerControllerUnitTest {
 
     @Autowired
     MockMvc mvc;
-    @MockBean
+    @MockitoBean
     CustomerRepository repository;
-    @MockBean
+    @MockitoBean
     AccountClient accountClient;
 
     @Test

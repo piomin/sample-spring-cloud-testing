@@ -1,4 +1,4 @@
-## Mastering Spring Cloud [![Twitter](https://img.shields.io/twitter/follow/piotr_minkowski.svg?style=social&logo=twitter&label=Follow%20Me)](https://twitter.com/piotr_minkowski)
+## Mastering Spring Cloud in Testing [![Twitter](https://img.shields.io/twitter/follow/piotr_minkowski.svg?style=social&logo=twitter&label=Follow%20Me)](https://twitter.com/piotr_minkowski)
 
 [![CircleCI](https://circleci.com/gh/piomin/sample-spring-cloud-testing.svg?style=svg)](https://circleci.com/gh/piomin/sample-spring-cloud-testing)
 
@@ -8,7 +8,7 @@
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=piomin_sample-spring-cloud-testing&metric=ncloc)](https://sonarcloud.io/dashboard?id=piomin_sample-spring-cloud-testing)
 
 ## Overview
-This repository implements a microservices architecture using Spring Boot 2.7.x and Spring Cloud 2021.x, built and managed with Maven. It includes the following services:
+This repository implements a microservices architecture using Spring Boot 3.x and Spring Cloud 2025.x, built and managed with Maven. It includes the following services:
 
 - **gateway-service**: API gateway routing external requests  
 - **discovery-service**: Eureka-based service registry  
@@ -29,7 +29,7 @@ graph LR
   GW --> ORD[Order Service]
   ORD --> PROD[Product Service]
   subgraph Infra
-    DISC[Discovery Service (Eureka)]
+    DISC[Discovery Service]
   end
   GW -. registration .-> DISC
   ACC -. registration .-> DISC
