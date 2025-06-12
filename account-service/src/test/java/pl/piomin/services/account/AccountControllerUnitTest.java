@@ -7,8 +7,8 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import pl.piomin.services.account.controller.AccountController;
 import pl.piomin.services.account.model.Account;
@@ -29,7 +29,7 @@ public class AccountControllerUnitTest {
 
     @Autowired
     MockMvc mvc;
-    @MockBean
+    @MockitoBean
     AccountRepository repository;
 
     @Test

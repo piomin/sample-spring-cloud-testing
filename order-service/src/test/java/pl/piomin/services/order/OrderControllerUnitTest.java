@@ -7,8 +7,8 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import pl.piomin.services.order.client.AccountClient;
 import pl.piomin.services.order.client.CustomerClient;
@@ -33,13 +33,13 @@ public class OrderControllerUnitTest {
 
     @Autowired
     MockMvc mvc;
-    @MockBean
+    @MockitoBean
     OrderRepository repository;
-    @MockBean
+    @MockitoBean
     AccountClient accountClient;
-    @MockBean
+    @MockitoBean
     CustomerClient customerClient;
-    @MockBean
+    @MockitoBean
     ProductClient productClient;
 
     @Test

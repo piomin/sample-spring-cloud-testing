@@ -8,7 +8,7 @@ import au.com.dius.pact.provider.junitsupport.loader.PactBroker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import pl.piomin.services.account.model.Account;
 import pl.piomin.services.account.repository.AccountRepository;
@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, properties = {"eureka.client.enabled: false"})
 public class AccountProviderContractTest {
 
-    @MockBean
+    @MockitoBean
     private AccountRepository repository;
 
     @BeforeEach
