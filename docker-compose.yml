@@ -4,7 +4,7 @@ services:
   postgres:
     image: postgres
     healthcheck:
-      test: psql postgres --command "select 1" -U postgres
+      test: ["CMD-SHELL", "psql -U postgres -d postgres -c 'select 1'"]
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
@@ -13,7 +13,7 @@ services:
       - "5432:5432"
 
   pact-broker:
-    image: pactfoundation/pact-broker:2.107.0.1
+    image: pactfoundation/pact-broker:latest
     ports:
       - "9292:9292"
     depends_on:
