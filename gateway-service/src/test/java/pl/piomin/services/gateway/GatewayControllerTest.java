@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.resttestclient.TestRestTemplate;
 
 import pl.piomin.services.gateway.model.Order;
 import pl.piomin.services.gateway.model.OrderStatus;
