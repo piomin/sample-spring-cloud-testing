@@ -20,7 +20,7 @@ jobs:
           steps:
             - run:
                 name: Sonar Analysis
-                command: mvn package sonar:sonar -DskipTests
+                command: mvn package org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -DskipTests
 
 executors:
   machine:
