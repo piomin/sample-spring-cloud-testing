@@ -7,6 +7,11 @@ jobs:
       image: ubuntu-2204:current
     steps:
       - checkout
+      - git-shallow-clone/checkout_advanced:
+          clone_options: '--filter=blob:none'
+      - run:
+          name: "Git fetch"
+          command: git fetch --no-filter --refetch
       - docker/install-docker-compose
       - run:
           name: Run Pact Broker
@@ -33,6 +38,7 @@ executors:
 orbs:
   maven: circleci/maven@2.1.1
   docker: circleci/docker@2.8.2
+  git-shallow-clone: guitarrapc/git-shallow-clone@2.8.0
 
 workflows:
   maven_test:
